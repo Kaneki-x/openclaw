@@ -324,7 +324,10 @@ fun SettingsSheet(viewModel: MainViewModel) {
       viewModel.setLocationPreciseEnabled(true)
     } else {
       pendingPreciseToggle = true
-      locationPermissionLauncher.launch(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION))
+      // Android 12+ ignores a FINE-only request; COARSE must be requested alongside it.
+      locationPermissionLauncher.launch(
+        arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION),
+      )
     }
   }
 
