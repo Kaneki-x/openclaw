@@ -853,7 +853,9 @@ fun OnboardingFlow(viewModel: MainViewModel, modifier: Modifier = Modifier) {
                   if (token.isNotEmpty()) {
                     viewModel.setGatewayToken(token)
                   }
-                  viewModel.setGatewayPassword(password)
+                  if (password.isNotEmpty()) {
+                    viewModel.setGatewayPassword(password)
+                  }
                   viewModel.connectManual()
                 },
                 modifier = Modifier.weight(1f).height(52.dp),

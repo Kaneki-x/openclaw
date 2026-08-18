@@ -203,7 +203,9 @@ fun ConnectTabScreen(viewModel: MainViewModel) {
         if (config.token.isNotBlank()) {
           viewModel.setGatewayToken(config.token)
         }
-        viewModel.setGatewayPassword(config.password)
+        if (config.password.isNotBlank()) {
+          viewModel.setGatewayPassword(config.password)
+        }
         viewModel.connectManual()
       },
       modifier = Modifier.fillMaxWidth().height(52.dp),
